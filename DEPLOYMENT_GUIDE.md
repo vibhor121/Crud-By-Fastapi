@@ -8,7 +8,7 @@ This guide will help you deploy your FastAPI backend to **Render** and your Reac
 - Render account (free)
 - Netlify account (free)
 
----
+---     
 
 ## 🔧 Backend Deployment (Render)
 
