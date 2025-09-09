@@ -27,7 +27,15 @@ def greet():
     return "Hello, World! Cjachupakur"
 
 @app.get("/health")
-def health_check(db: Session = Depends(get_db)):
+def health_check():
+    try:
+        # Simple health check without database dependency
+        return {"status": "healthy", "message": "API is running"}
+    except Exception as e:
+        return {"status": "unhealthy", "error": str(e)}
+
+@app.get("/health-db")
+def health_check_db(db: Session = Depends(get_db)):
     try:
         # Test database connection
         db.execute("SELECT 1")
