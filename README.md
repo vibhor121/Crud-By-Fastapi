@@ -71,3 +71,4 @@ The backend will be available at `http://localhost:8000`
 - Frontend runs on port 3000
 - Backend runs on port 8000
 - CORS is configured to allow frontend-backend communication
+     
