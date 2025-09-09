@@ -1,8 +1,11 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from database_models import Base
+import os
 
-db_url = "postgresql://postgres:12345678@localhost:5432/telusko"
+# Use environment variable for database URL (for production)
+# Falls back to local development URL
+db_url = os.getenv("DATABASE_URL", "postgresql://postgres:12345678@localhost:5432/telusko")
 engine = create_engine(db_url)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 

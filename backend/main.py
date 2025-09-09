@@ -10,7 +10,11 @@ app = FastAPI()
 # Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # React dev server
+    allow_origins=[
+        "http://localhost:3000",  # React dev server
+        "https://your-netlify-app.netlify.app",  # Replace with your Netlify URL
+        "https://your-custom-domain.com"  # Replace with your custom domain if you have one
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
