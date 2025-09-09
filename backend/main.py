@@ -12,8 +12,8 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:3000",  # React dev server
-        "https://your-netlify-app.netlify.app",  # Replace with your Netlify URL
-        "https://your-custom-domain.com"  # Replace with your custom domain if you have one
+        "https://playful-tanuki-c3503b.netlify.app",  # Your Netlify URL
+        "https://*.netlify.app"  # Allow all Netlify subdomains
     ],
     allow_credentials=True,
     allow_methods=["*"],
