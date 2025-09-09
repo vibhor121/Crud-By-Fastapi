@@ -26,10 +26,22 @@ app.add_middleware(
 def greet():
     return "Hello, World! Cjachupakur"
 
+@app.get("/health")
+def health_check(db: Session = Depends(get_db)):
+    try:
+        # Test database connection
+        db.execute("SELECT 1")
+        return {"status": "healthy", "database": "connected"}
+    except Exception as e:
+        return {"status": "unhealthy", "database": "disconnected", "error": str(e)}
+
 @app.get("/products")
 def get_all_products(db: Session = Depends(get_db)):
-    products = db.query(ProductDB).all()
-    return products
+    try:
+        products = db.query(ProductDB).all()
+        return products
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Database error: {str(e)}")
 
 @app.get("/product/{id}")
 def get_product_by_id(id: int, db: Session = Depends(get_db)):
